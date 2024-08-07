@@ -1,0 +1,51 @@
+<div class="fixed inset-y-0 w-64 border-r px-4">
+    <div class="flex h-20 w-full items-center border-b">
+        <h1 class="flex-grow text-center text-xl font-bold tracking-wide">
+            My Wallet
+        </h1>
+    </div>
+    <ul class="mt-4 flex flex-col gap-2">
+        <li>
+            <a
+                class="flex cursor-pointer items-center gap-2 rounded-md px-4 py-3 hover:bg-zinc-800 hover:text-white"
+                routerLink="/dashboard"
+            >
+                <lucide-icon name="layout-dashboard-icon"></lucide-icon>
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a
+                class="flex cursor-pointer items-center gap-2 rounded-md px-4 py-3 hover:bg-zinc-800 hover:text-white"
+                routerLink="/transactions"
+            >
+                <lucide-icon name="arrow-left-right-icon"></lucide-icon>
+                Transactions
+            </a>
+        </li>
+        <li>
+            <a
+                class="flex cursor-pointer items-center gap-2 rounded-md px-4 py-3 hover:bg-zinc-800 hover:text-white"
+                routerLink="/accounts"
+            >
+                <lucide-icon name="wallet-icon"></lucide-icon>
+                Accounts
+            </a>
+        </li>
+        <li>
+            <a
+                class="flex cursor-pointer items-center gap-2 rounded-md px-4 py-3 hover:bg-zinc-800 hover:text-white"
+                routerLink="/categories"
+            >
+                <lucide-icon name="chart-column-stacked-icon"></lucide-icon>
+                Categories
+            </a>
+        </li>
+        <li
+            class="flex cursor-pointer items-center gap-2 rounded-md px-4 py-3 hover:bg-zinc-800 hover:text-white"
+        >
+            <lucide-icon name="settings-icon"></lucide-icon>
+            Settings
+        </li>
+    </ul>
+</div>
