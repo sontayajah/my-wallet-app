@@ -1,3 +1,3 @@
 export * from './account';
-export * from './expense';
-export * from './income';
+export * from './transaction';
+export * from './category';

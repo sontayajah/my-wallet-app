@@ -1,1 +1,54 @@
-<p>dashboard works!</p>
+<div class="ms-64">
+    <div class="mb-4 flex items-center justify-between gap-2">
+        <!-- section heading show date since to today-->
+        <h1 class="text-2xl font-bold">Dashboard</h1>
+        <div class="flex items-center gap-2 text-sm text-gray-500">
+            <select
+                class="rounded-md border p-2"
+                [(ngModel)]="selectedDateRange"
+            >
+                <option value="all">All</option>
+                <option value="today">Today</option>
+                <option value="this-week">This Week</option>
+                <option value="this-month">This Month</option>
+                <option value="this-year">This Year</option>
+            </select>
+        </div>
+    </div>
+    <div class="grid grid-cols-4 gap-x-8">
+        <!-- totoal expense -->
+        <div class="rounded-md border p-4 shadow-sm">
+            <div class="flex flex-col gap-4">
+                <div class="text-sm text-gray-500">Total Expense</div>
+                <div class="text-3xl font-bold">
+                    {{ formatCurrency(totalExpense) }}
+                </div>
+            </div>
+        </div>
+        <!-- total income -->
+        <div class="rounded-md border p-4 shadow-sm">
+            <div class="flex flex-col gap-4">
+                <div class="text-sm text-gray-500">Total Income</div>
+                <div class="text-3xl font-bold">
+                    {{ formatCurrency(totalIncome) }}
+                </div>
+            </div>
+        </div>
+        <!-- total balance -->
+        <div class="rounded-md border p-4 shadow-sm">
+            <div class="flex flex-col gap-4">
+                <div class="text-sm text-gray-500">Total Profit</div>
+                <div class="text-3xl font-bold">
+                    {{ formatCurrency(totalProfit) }}
+                </div>
+            </div>
+        </div>
+        <!-- total transactions -->
+        <div class="rounded-md border p-4 shadow-sm">
+            <div class="flex flex-col gap-4">
+                <div class="text-sm text-gray-500">Total Transactions</div>
+                <div class="text-3xl font-bold">{{ totalTransactions }}</div>
+            </div>
+        </div>
+    </div>
+</div>

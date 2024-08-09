@@ -1,48 +1,56 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Account, Expense, Income } from '../interfaces';
+import { Account, Transaction } from '../interfaces';
 
 @Injectable({
     providedIn: 'root',
 })
 export class FinanceService {
-    private apiUrl = 'https://api.example.com';
+    private apiUrl = 'http://localhost:5129/api';
 
     constructor(private http: HttpClient) {}
 
-    getExpenses(): Observable<Expense[]> {
-        return this.http.get<Expense[]>(`${this.apiUrl}/expenses`);
+    getTransactions(): Observable<Transaction[]> {
+        return this.http.get<Transaction[]>(`${this.apiUrl}/transaction`);
     }
 
-    getIncome(): Observable<Income[]> {
-        return this.http.get<Income[]>(`${this.apiUrl}/income`);
+    getAllExpenses(): Observable<Transaction[]> {
+        return this.http.get<Transaction[]>(
+            `${this.apiUrl}/transaction/expense`,
+        );
+    }
+
+    getAllIncome(): Observable<Transaction[]> {
+        return this.http.get<Transaction[]>(
+            `${this.apiUrl}/transaction/income`,
+        );
     }
 
     getAccounts(): Observable<Account[]> {
         return this.http.get<Account[]>(`${this.apiUrl}/accounts`);
     }
 
-    addExpense(expense: Expense): Observable<Expense> {
-        return this.http.post<Expense>(`${this.apiUrl}/expenses`, expense);
+    addExpense(expense: Transaction): Observable<Transaction> {
+        return this.http.post<Transaction>(`${this.apiUrl}/expenses`, expense);
     }
 
-    addIncome(income: Income): Observable<Income> {
-        return this.http.post<Income>(`${this.apiUrl}/income`, income);
+    addIncome(income: Transaction): Observable<Transaction> {
+        return this.http.post<Transaction>(`${this.apiUrl}/income`, income);
     }
 
     addAccount(account: Account): Observable<Account> {
         return this.http.post<Account>(`${this.apiUrl}/accounts`, account);
     }
 
-    updateExpense(expense: Expense): Observable<void> {
+    updateExpense(expense: Transaction): Observable<void> {
         return this.http.put<void>(
             `${this.apiUrl}/expenses/${expense.id}`,
             expense,
         );
     }
 
-    updateIncome(income: Income): Observable<void> {
+    updateIncome(income: Transaction): Observable<void> {
         return this.http.put<void>(
             `${this.apiUrl}/income/${income.id}`,
             income,

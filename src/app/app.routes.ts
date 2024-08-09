@@ -3,6 +3,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { CategoryComponent } from './category/category.component';
+import { SettingsComponent } from './settings/settings.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -12,5 +13,5 @@ export const routes: Routes = [
     { path: 'accounts', component: AccountsComponent },
     { path: 'transactions', component: TransactionsComponent },
     { path: 'categories', component: CategoryComponent },
-    // { path: 'auth', component: AuthComponent }
+    { path: 'settings', component: SettingsComponent },
 ];

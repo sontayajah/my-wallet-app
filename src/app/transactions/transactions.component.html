@@ -1,1 +1,72 @@
-<p>transactions works!</p>
+<div class="ms-64">
+    <div>
+        <!-- Recent Transactions -->
+        <div class="flex items-center justify-between">
+            <h1 class="text-2xl font-bold">Recent Transactions</h1>
+            <a
+                class="flex items-center gap-2 text-sm text-gray-500"
+                routerLink="/transactions"
+            >
+                <span>View All</span>
+                <lucide-icon
+                    name="arrow-right-icon"
+                    class="size-4"
+                ></lucide-icon>
+            </a>
+        </div>
+
+        <div class="mt-4">
+            <table class="w-full">
+                <thead>
+                    <tr class="h-12">
+                        <th class="w-44 px-2 text-left">Date</th>
+                        <th class="px-2 text-left">Title</th>
+                        <th class="w-32 px-2 text-left">Amount</th>
+                        <th class="w-32 px-2 text-left">Type</th>
+                        <th class="w-60 px-2 text-left">Note</th>
+                        <th class="w-40 px-2 text-left">Category</th>
+                        <th class="w-12">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of transactions; track $index) {
+                        <tr class="h-12 border-y">
+                            <td class="px-2">
+                                {{ formatDateTime(item.date) }}
+                            </td>
+                            <td class="text-ellipsis px-2">
+                                {{ item.title }}
+                            </td>
+                            <td class="text-ellipsis px-2">
+                                {{ formatCurrency(item.amount) }}
+                            </td>
+                            <td>
+                                <span
+                                    class="rounded-md px-2 py-1 text-xs"
+                                    [ngClass]="{
+                                        'bg-green-100 text-green-500':
+                                            item.type === 'income',
+                                        'bg-red-100 text-red-500':
+                                            item.type === 'expense',
+                                    }"
+                                >
+                                    {{ item.type }}
+                                </span>
+                            </td>
+                            <td class="text-ellipsis px-2">{{ item.note }}</td>
+                            <td class="text-ellipsis px-2">
+                                {{ item.category.name }}
+                            </td>
+                            <td class="cursor-pointer">
+                                <lucide-icon
+                                    name="ellipsis-vertical-icon"
+                                    class="size-4"
+                                ></lucide-icon>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

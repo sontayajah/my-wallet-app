@@ -1,5 +1,7 @@
-<div class="fixed inset-y-0 w-64 border-r px-4">
-    <div class="flex h-20 w-full items-center border-b">
+<div
+    class="fixed inset-y-0 z-50 w-64 border-r bg-white px-4 transition-all duration-500"
+>
+    <div class="relative flex h-20 w-full items-center border-b">
         <h1 class="flex-grow text-center text-xl font-bold tracking-wide">
             My Wallet
         </h1>
@@ -9,6 +11,7 @@
             <a
                 class="flex cursor-pointer items-center gap-2 rounded-md px-4 py-3 hover:bg-zinc-800 hover:text-white"
                 routerLink="/dashboard"
+                routerLinkActive="bg-zinc-800 text-white"
             >
                 <lucide-icon name="layout-dashboard-icon"></lucide-icon>
                 Dashboard
@@ -18,6 +21,7 @@
             <a
                 class="flex cursor-pointer items-center gap-2 rounded-md px-4 py-3 hover:bg-zinc-800 hover:text-white"
                 routerLink="/transactions"
+                routerLinkActive="bg-zinc-800 text-white"
             >
                 <lucide-icon name="arrow-left-right-icon"></lucide-icon>
                 Transactions
@@ -27,6 +31,7 @@
             <a
                 class="flex cursor-pointer items-center gap-2 rounded-md px-4 py-3 hover:bg-zinc-800 hover:text-white"
                 routerLink="/accounts"
+                routerLinkActive="bg-zinc-800 text-white"
             >
                 <lucide-icon name="wallet-icon"></lucide-icon>
                 Accounts
@@ -36,16 +41,21 @@
             <a
                 class="flex cursor-pointer items-center gap-2 rounded-md px-4 py-3 hover:bg-zinc-800 hover:text-white"
                 routerLink="/categories"
+                routerLinkActive="bg-zinc-800 text-white"
             >
                 <lucide-icon name="chart-column-stacked-icon"></lucide-icon>
                 Categories
             </a>
         </li>
-        <li
-            class="flex cursor-pointer items-center gap-2 rounded-md px-4 py-3 hover:bg-zinc-800 hover:text-white"
-        >
-            <lucide-icon name="settings-icon"></lucide-icon>
-            Settings
+        <li>
+            <a
+                class="flex cursor-pointer items-center gap-2 rounded-md px-4 py-3 hover:bg-zinc-800 hover:text-white"
+                routerLink="/settings"
+                routerLinkActive="bg-zinc-800 text-white"
+            >
+                <lucide-icon name="settings-icon"></lucide-icon>
+                Settings
+            </a>
         </li>
     </ul>
 </div>
