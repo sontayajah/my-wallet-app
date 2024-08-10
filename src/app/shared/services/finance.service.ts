@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Account, Transaction } from '../interfaces';
+import { Account, Category, Transaction } from '../interfaces';
 
 @Injectable({
     providedIn: 'root',
@@ -27,8 +27,12 @@ export class FinanceService {
         );
     }
 
+    getAllCategory(): Observable<Category[]> {
+        return this.http.get<Category[]>(`${this.apiUrl}/category`);
+    }
+
     getAccounts(): Observable<Account[]> {
-        return this.http.get<Account[]>(`${this.apiUrl}/accounts`);
+        return this.http.get<Account[]>(`${this.apiUrl}/account`);
     }
 
     addExpense(expense: Transaction): Observable<Transaction> {

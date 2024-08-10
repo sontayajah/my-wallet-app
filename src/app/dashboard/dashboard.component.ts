@@ -3,7 +3,7 @@ import { FinanceService } from '../shared/services/finance.service';
 import { LucideAngularModule } from 'lucide-angular';
 import { FormsModule } from '@angular/forms';
 import { Transaction } from '../shared/interfaces';
-
+import { forkJoin } from 'rxjs';
 @Component({
     standalone: true,
     selector: 'app-dashboard',
@@ -23,19 +23,17 @@ export class DashboardComponent implements OnInit {
     constructor(private financeService: FinanceService) {}
 
     ngOnInit(): void {
-        this.financeService.getTransactions().subscribe((transactions) => {
+        forkJoin({
+            transactions: this.financeService.getTransactions(),
+            expenses: this.financeService.getAllExpenses(),
+            income: this.financeService.getAllIncome(),
+        }).subscribe(({ transactions, expenses, income }) => {
             this.transactions = transactions;
-        });
-
-        this.financeService.getAllExpenses().subscribe((expenses) => {
             this.expenses = expenses;
             this.totalExpense = expenses.reduce(
                 (acc, expense) => acc + expense.amount,
                 0,
             );
-        });
-
-        this.financeService.getAllIncome().subscribe((income) => {
             this.totalIncome = income.reduce(
                 (acc, income) => acc + income.amount,
                 0,
