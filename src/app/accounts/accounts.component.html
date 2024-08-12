@@ -41,7 +41,7 @@
                             {{ item.name }}
                         </td>
                         <td class="text-ellipsis px-2">
-                            {{ formatCurrency(item.balance) }}
+                            {{ item.balance | currency }}
                         </td>
                         <td class="text-ellipsis px-2">
                             {{ item.description }}

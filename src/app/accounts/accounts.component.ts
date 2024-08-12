@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from '../shared/interfaces';
 import { FinanceService } from '../shared/services/finance.service';
-import { UtilsService } from '../shared/utils.service';
 import { LucideAngularModule } from 'lucide-angular';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
     selector: 'app-accounts',
     standalone: true,
-    imports: [LucideAngularModule],
+    imports: [LucideAngularModule, CurrencyPipe],
     templateUrl: './accounts.component.html',
     styleUrl: './accounts.component.css',
 })
@@ -16,10 +16,7 @@ export class AccountsComponent implements OnInit {
     expenseCount: number[] = [];
     incomeCount: number[] = [];
 
-    constructor(
-        private financeService: FinanceService,
-        private utilsService: UtilsService,
-    ) {}
+    constructor(private financeService: FinanceService) {}
 
     ngOnInit(): void {
         this.financeService.getAccounts().subscribe((accounts) => {
@@ -39,9 +36,5 @@ export class AccountsComponent implements OnInit {
                     ).length,
             );
         });
-    }
-
-    formatCurrency(nunmber: number): string {
-        return this.utilsService.formatCurrency(nunmber);
     }
 }

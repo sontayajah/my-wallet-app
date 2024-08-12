@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../shared/interfaces';
 import { FinanceService } from '../shared/services/finance.service';
 import { LucideAngularModule } from 'lucide-angular';
-import { UtilsService } from '../shared/utils.service';
 
 @Component({
     selector: 'app-category',

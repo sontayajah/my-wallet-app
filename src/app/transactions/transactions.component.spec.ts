@@ -20,16 +20,6 @@ describe('TransactionsComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should format currency', () => {
-        expect(component.formatCurrency(100)).toBe('$100.00');
-    });
-
-    it('should format date time', () => {
-        expect(component.formatDateTime(new Date('2021-01-01T00:00:00'))).toBe(
-            '1/1/2021 12:00:00 AM',
-        );
-    });
-
     it('should get transactions', () => {
         expect(component.transactions).toEqual([]);
     });

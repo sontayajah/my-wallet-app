@@ -4,12 +4,13 @@ import { LucideAngularModule } from 'lucide-angular';
 import { FormsModule } from '@angular/forms';
 import { Transaction } from '../shared/interfaces';
 import { forkJoin } from 'rxjs';
+import { CurrencyPipe } from '@angular/common';
 @Component({
     standalone: true,
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.css'],
-    imports: [LucideAngularModule, FormsModule],
+    imports: [LucideAngularModule, FormsModule, CurrencyPipe],
 })
 export class DashboardComponent implements OnInit {
     totalExpense: number = 0;
@@ -50,12 +51,5 @@ export class DashboardComponent implements OnInit {
 
     calculateTotalTransactions(): void {
         this.totalTransactions = this.transactions.length;
-    }
-
-    formatCurrency(amount: number): string {
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-        }).format(amount);
     }
 }
