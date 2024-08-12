@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit(): void {
         forkJoin({
-            transactions: this.financeService.getTransactions(),
+            transactions: this.financeService.getAllTransactions(),
             expenses: this.financeService.getAllExpenses(),
             income: this.financeService.getAllIncome(),
         }).subscribe(({ transactions, expenses, income }) => {

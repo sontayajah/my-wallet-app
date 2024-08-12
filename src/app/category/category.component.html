@@ -17,6 +17,7 @@
                 <tr class="h-12">
                     <th class="px-2 text-left">Name</th>
                     <th class="px-2 text-left">Description</th>
+                    <th class="px-2 text-left">Type</th>
                     <th class="w-12 px-2">Action</th>
                 </tr>
             </thead>
@@ -27,7 +28,20 @@
                             {{ item.name }}
                         </td>
                         <td class="text-ellipsis px-2">
-                            {{ item.description }}
+                            {{ item.description || "-" }}
+                        </td>
+                        <td class="px-2">
+                            <span
+                                class="rounded-md px-2 py-1 text-xs"
+                                [ngClass]="{
+                                    'bg-green-100 text-green-500':
+                                        item.type === 'income',
+                                    'bg-red-100 text-red-500':
+                                        item.type === 'expense',
+                                }"
+                            >
+                                {{ item.type }}
+                            </span>
                         </td>
                         <td class="cursor-pointer">
                             <lucide-icon

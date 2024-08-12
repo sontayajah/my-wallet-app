@@ -19,7 +19,7 @@ export class AccountsComponent implements OnInit {
     constructor(private financeService: FinanceService) {}
 
     ngOnInit(): void {
-        this.financeService.getAccounts().subscribe((accounts) => {
+        this.financeService.getAllAccounts().subscribe((accounts) => {
             this.accounts = accounts;
 
             this.expenseCount = this.accounts.map(

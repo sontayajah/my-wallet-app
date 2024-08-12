@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
     constructor(private financeService: FinanceService) {}
 
     ngOnInit() {
-        this.financeService.getAccounts().subscribe((transactions) => {
+        this.financeService.getAllAccounts().subscribe((transactions) => {
             this.totalAssets = transactions.reduce(
                 (acc, transaction) => acc + transaction.balance,
                 0,

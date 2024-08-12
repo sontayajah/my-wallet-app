@@ -28,6 +28,7 @@
             <!-- Add transaction button -->
             <button
                 class="flex items-center rounded-md bg-zinc-800 px-4 py-2 text-white transition-colors hover:bg-zinc-800/85"
+                (click)="isAddTransactionModalOpen = true"
             >
                 <lucide-icon name="plus-icon" class="size-4"></lucide-icon>
                 Add Transaction
@@ -51,7 +52,7 @@
                 @for (item of transactions; track $index) {
                     <tr class="h-12 border-y">
                         <td class="px-2">
-                            {{ item.date | date: "dd/MM/yyyy hh:mm:ss" }}
+                            {{ item.date | date: "dd/MM/yyyy HH:mm:ss" }}
                         </td>
                         <td class="text-ellipsis px-2">
                             {{ item.title }}
@@ -73,10 +74,10 @@
                             </span>
                         </td>
                         <td class="text-ellipsis px-2">
-                            {{ item.note }}
+                            {{ item.note || "-" }}
                         </td>
                         <td class="text-ellipsis px-2">
-                            {{ item.category.name }}
+                            {{ item.category?.name || "-" }}
                         </td>
                         <td class="cursor-pointer">
                             <lucide-icon
@@ -88,5 +89,22 @@
                 }
             </tbody>
         </table>
+    </div>
+    <div>
+        @if (isAddTransactionModalOpen) {
+            <div
+                class="fixed inset-0 z-40 bg-black bg-opacity-50"
+                (click)="isAddTransactionModalOpen = false"
+            ></div>
+        }
+
+        <!-- Add Transaction Modal -->
+        <app-transaction-modal
+            [isAddTransactionModalOpen]="isAddTransactionModalOpen"
+            (close)="isAddTransactionModalOpen = false"
+            (isAddTransactionModalOpenChange)="
+                isAddTransactionModalOpen = $event
+            "
+        ></app-transaction-modal>
     </div>
 </div>

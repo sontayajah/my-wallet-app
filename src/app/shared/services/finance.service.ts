@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Account, Category, Transaction } from '../interfaces';
+import { Account, Category, Transaction, TransactionForm } from '../interfaces';
 
 @Injectable({
     providedIn: 'root',
@@ -11,7 +11,7 @@ export class FinanceService {
 
     constructor(private http: HttpClient) {}
 
-    getTransactions(): Observable<Transaction[]> {
+    getAllTransactions(): Observable<Transaction[]> {
         return this.http.get<Transaction[]>(`${this.apiUrl}/transaction`);
     }
 
@@ -31,52 +31,14 @@ export class FinanceService {
         return this.http.get<Category[]>(`${this.apiUrl}/category`);
     }
 
-    getAccounts(): Observable<Account[]> {
+    getAllAccounts(): Observable<Account[]> {
         return this.http.get<Account[]>(`${this.apiUrl}/account`);
     }
 
-    addExpense(expense: Transaction): Observable<Transaction> {
-        return this.http.post<Transaction>(`${this.apiUrl}/expenses`, expense);
-    }
-
-    addIncome(income: Transaction): Observable<Transaction> {
-        return this.http.post<Transaction>(`${this.apiUrl}/income`, income);
-    }
-
-    addAccount(account: Account): Observable<Account> {
-        return this.http.post<Account>(`${this.apiUrl}/accounts`, account);
-    }
-
-    updateExpense(expense: Transaction): Observable<void> {
-        return this.http.put<void>(
-            `${this.apiUrl}/expenses/${expense.id}`,
-            expense,
+    addTransaction(transaction: TransactionForm): Observable<Transaction> {
+        return this.http.post<Transaction>(
+            `${this.apiUrl}/transaction`,
+            transaction,
         );
-    }
-
-    updateIncome(income: Transaction): Observable<void> {
-        return this.http.put<void>(
-            `${this.apiUrl}/income/${income.id}`,
-            income,
-        );
-    }
-
-    updateAccount(account: Account): Observable<void> {
-        return this.http.put<void>(
-            `${this.apiUrl}/accounts/${account.id}`,
-            account,
-        );
-    }
-
-    deleteExpense(id: number): Observable<void> {
-        return this.http.delete<void>(`${this.apiUrl}/expenses/${id}`);
-    }
-
-    deleteIncome(id: number): Observable<void> {
-        return this.http.delete<void>(`${this.apiUrl}/income/${id}`);
-    }
-
-    deleteAccount(id: number): Observable<void> {
-        return this.http.delete<void>(`${this.apiUrl}/accounts/${id}`);
     }
 }

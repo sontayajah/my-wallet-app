@@ -7,8 +7,18 @@ export interface Transaction {
     date: Date;
     title: string;
     amount: number;
-    category: Category;
-    note: string;
-    account: Account;
+    category?: Category;
+    note?: string;
+    account?: Account;
+    type: 'expense' | 'income';
+}
+
+export interface TransactionForm {
+    [key: string]: any;
+    title: string;
+    amount: number;
+    categoryId?: number;
+    note?: string;
+    accountId?: number;
     type: 'expense' | 'income';
 }
